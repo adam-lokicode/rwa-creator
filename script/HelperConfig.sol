@@ -58,7 +58,7 @@ contract HelperConfig {
             ethUsdPriceFeed: 0xF9680D99D6C9589e2a93a78A04A279e509205945,
             functionsRouter: 0xdc2AAF042Aeff2E68B3e8E33F19e4B9fA7C73F10,
             donId: 0x66756e2d706f6c79676f6e2d6d61696e6e65742d310000000000000000000000,
-            subId: 0, // TODO
+            subId: 2772, // TODO
             // USDC on Polygon
             redemptionCoin: 0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359,
             linkToken: 0xb0897686c545045aFc77CF20eC7A532E3120E0F1,
