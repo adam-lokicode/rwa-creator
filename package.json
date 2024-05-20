@@ -3,6 +3,7 @@
   "dependencies": {
     "@chainlink/functions-toolkit": "^0.2.8",
     "dotenv": "^16.4.5",
+    "geth": "^0.4.0",
     "prettier": "^3.2.5"
   },
   "scripts": {

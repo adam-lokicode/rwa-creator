@@ -47,7 +47,8 @@ contract HelperConfig {
     constructor() {
         chainIdToNetworkConfig[137] = getPolygonConfig();
         chainIdToNetworkConfig[80_001] = getMumbaiConfig();
-        chainIdToNetworkConfig[31_337] = _setupAnvilConfig();
+        chainIdToNetworkConfig[31_337] = getAnvilEthConfig();
+        chainIdToNetworkConfig[11155111] = getSepoliaConfig();
         activeNetworkConfig = chainIdToNetworkConfig[block.chainid];
     }
 
@@ -98,7 +99,7 @@ contract HelperConfig {
             ethUsdPriceFeed: 0x694AA1769357215DE4FAC081bf1f309aDC325306,
             functionsRouter: 0xb83E47C2bC239B3bf370bc41e1459A34b41238D0,
             donId: 0x66756e2d657468657265756d2d7365706f6c69612d3100000000000000000000,
-            subId: 2274,
+            subId: 2772,
             // USDC on Mumbai
             redemptionCoin: 0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238,
             linkToken: 0x779877A7B0D9E8603169DdbD7836e478b4624789,

@@ -862,6 +862,11 @@ ganache@^7.9.1:
     bufferutil "4.0.5"
     utf-8-validate "5.0.7"
 
+geth@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.npmjs.org/geth/-/geth-0.4.0.tgz"
+  integrity sha512-tS44TSnoSKjAK3kKrv7wP/E2YYEZ1ZikowMRgkuXYz3AxWIVC4em+aEmODv2+rIIkUX1veVwb54Nz1XZzBf7Rw==
+
 hash-base@^3.0.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/hash-base/-/hash-base-3.1.0.tgz"

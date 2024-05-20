@@ -6,6 +6,14 @@ DEFAULT_ANVIL_KEY := 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf
 
 all: remove install build
 
+deploy:
+	@echo "ETHERSCAN_API_KEY=${ETHERSCAN_API_KEY}"
+	@echo "FORK_URL=${FORK_URL}"
+	@echo "PRIVATE_KEY=${PRIVATE_KEY}"
+	@forge script script/DeployDTsla.s.sol --sender 0xBdEffbc01b875293a876613d4dC3B4eE1715c51E --rpc-url https://sepolia.infura.io/v3/5e87273b19c24809abed377c3a41ecc0 --etherscan-api-key FPNJJWTZEGIFSSPA1BIEKMSCYAI89TX77N --priority-gas-price 1 --verify --broadcast --private-key ${PRIVATE_KEY}
+
+
+# forge script script/DeployDTsla.s.sol --sender 0xBdEffbc01b875293a876613d4dC3B4eE1715c51E --rpc-url https://sepolia.infura.io/v3/5e87273b19c24809abed377c3a41ecc0 --etherscan-api-key FPNJJWTZEGIFSSPA1BIEKMSCYAI89TX77N --priority-gas-price 1 --verify --broadcast --private-key ${PRIVATE_KEY}
 # Clean the repo
 clean  :; forge clean
 
@@ -44,3 +52,4 @@ setSupportedChain-sepolia :; cast send TOKEN_BRIDGE_ADDRESS "setSupportedChain(u
 
 # Multi-chain deploymetn doesn't work with account/sender yet :/ 
 deploy-bridges :; forge script script/DeployTokenBridges.s.sol --private-key ${PRIVATE_KEY} --verify --broadcast
+
