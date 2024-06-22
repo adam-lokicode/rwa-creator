@@ -36,3 +36,5 @@ contract DeploySTsla is Script {
     function deploySTSLA(address tslaFeed, address ethFeed) public returns (sTSLA) {
         sTSLA stsla = new sTSLA(tslaFeed, ethFeed);
         emit log_named_address
+    }
+}
