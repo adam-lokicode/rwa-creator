@@ -7,26 +7,32 @@ import { sTSLA } from "../src/sTSLA.sol";
 
 contract DeploySTsla is Script {
     function run() external {
-        // Get params
-        (address tslaFeed, address ethFeed) = getdTslaRequirements();
+        // Initialize HelperConfig
+        HelperConfig helperConfig = new HelperConfig();
 
-        // Actually deploy
+        // Get parameters
+        (address tslaFeed, address ethFeed) = getdTslaRequirements(helperConfig);
+
+        // Ensure parameters are valid
+        require(tslaFeed != address(0), "Invalid tslaFeed address");
+        require(ethFeed != address(0), "Invalid ethFeed address");
+
+        // Start broadcasting transactions
         vm.startBroadcast();
         deploySTSLA(tslaFeed, ethFeed);
         vm.stopBroadcast();
     }
 
-    function getdTslaRequirements() public returns (address, address) {
-        HelperConfig helperConfig = new HelperConfig();
-        (address tslaFeed,, address ethFeed,,,,,,,,,) = helperConfig.activeNetworkConfig();
+    function getdTslaRequirements(HelperConfig helperConfig) public view returns (address, address) {
+        (address tslaFeed, , address ethFeed, , , , , , , , , ) = helperConfig.activeNetworkConfig();
 
-        if (tslaFeed == address(0) || ethFeed == address(0)) {
-            revert("something is wrong");
-        }
+        // Log the feed addresses for debugging
+        emit log_named_address("TSLA Feed Address", tslaFeed);
+        emit log_named_address("ETH Feed Address", ethFeed);
+
         return (tslaFeed, ethFeed);
     }
 
     function deploySTSLA(address tslaFeed, address ethFeed) public returns (sTSLA) {
-        return new sTSLA(tslaFeed, ethFeed);
-    }
-}
+        sTSLA stsla = new sTSLA(tslaFeed, ethFeed);
+        emit log_named_address
