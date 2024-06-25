@@ -23,7 +23,12 @@ contract DeploySTsla is Script {
         vm.stopBroadcast();
     }
 
+    
+
     function getdTslaRequirements(HelperConfig helperConfig) public view returns (address, address) {
+         // Log the feed addresses for debugging
+        emit log_named_address("TSLA Feed Address", tslaFeed);
+        emit log_named_address("ETH Feed Address", ethFeed);
         (address tslaFeed, , address ethFeed, , , , , , , , , ) = helperConfig.activeNetworkConfig();
 
         // Log the feed addresses for debugging
